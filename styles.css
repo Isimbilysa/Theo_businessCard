@@ -1,0 +1,220 @@
+/* ============================================
+   Digital Business Card - Mobile-first styles
+   ============================================ */
+
+/* CSS custom properties for easy theming */
+:root {
+  --color-bg: #f0f2f5;
+  --color-card: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-border: #e5e7eb;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --radius-card: 16px;
+  --radius-photo: 50%;
+  --radius-btn: 12px;
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tap-min: 44px; /* Minimum touch target for accessibility */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base: mobile-first */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Full-height centered layout */
+.page {
+  min-height: 100vh;
+  padding: 24px 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card container */
+.card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 32px 24px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Circular profile photo */
+.card__photo-wrap {
+  position: relative;
+  margin: 0 auto 20px;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-photo);
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback when profile.jpg is missing */
+.card__photo-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+}
+
+.card__photo-placeholder--show {
+  display: flex !important;
+}
+
+/* Name and title */
+.card__name {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.card__title {
+  margin: 0 0 2px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.card__company {
+  margin: 0 0 24px;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+/* Contact links */
+.card__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.card__link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 4px 0;
+  min-height: var(--tap-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__link:hover,
+.card__link:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+.card__link--website {
+  color: var(--color-text-muted);
+}
+
+/* Action buttons - large for easy tapping */
+.card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding: 14px 24px;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary: Save Contact */
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background: var(--color-primary-hover);
+  color: #fff;
+  outline: none;
+}
+
+/* Secondary: Call, Send Email */
+.btn--secondary {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus {
+  background: #d1d5db;
+  color: var(--color-text);
+  outline: none;
+}
+
+/* Slightly larger card and text on larger screens */
+@media (min-width: 480px) {
+  .page {
+    padding: 32px 24px 48px;
+  }
+
+  .card {
+    padding: 40px 32px;
+    max-width: 400px;
+  }
+
+  .card__name {
+    font-size: 1.625rem;
+  }
+}

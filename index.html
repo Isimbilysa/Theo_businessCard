@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital business card - save contact, call, or email">
+  <title>Digital Business Card</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- System font stack for fast load and native feel on mobile -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="page">
+    <!-- Centered profile card -->
+    <article class="card">
+      <!-- Circular profile photo -->
+      <div class="card__photo-wrap">
+        <img
+          class="card__photo"
+          src="profile.jpg"
+          alt="Profile photo"
+          width="120"
+          height="120"
+          onerror="this.style.display='none'; this.nextElementSibling?.classList.add('card__photo-placeholder--show');"
+        >
+        <!-- Fallback when profile.jpg is missing: replace with your photo -->
+        <span class="card__photo-placeholder" aria-hidden="true">Photo</span>
+      </div>
+
+      <!-- Name and title -->
+      <h1 class="card__name">Theo NTAKIRUTIMANA</h1>
+      <p class="card__title">Project Manager</p>
+      <p class="card__company">PROJEX</p>
+
+      <!-- Contact details -->
+      <div class="card__contact">
+        <a href="tel:+250788123456" class="card__link">+224660712953</a>
+        <a href="mailto:you@example.com" class="card__link">theogene@projexciinc.com</a>
+        <!-- <a href="https://example.com" class="card__link card__link--website" target="_blank" rel="noopener">example.com</a> -->
+      </div>
+
+      <!-- Action buttons -->
+      <div class="card__actions">
+        <button type="button" class="btn btn--primary" id="btn-save-contact" aria-label="Save contact to phone">
+          Save Contact
+        </button>
+        <a href="tel:+250788123456" class="btn btn--secondary" aria-label="Call">Call</a>
+        <a href="mailto:you@example.com" class="btn btn--secondary" aria-label="Send email">Send Email</a>
+      </div>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
