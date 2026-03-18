@@ -4,13 +4,15 @@
 
 /* CSS custom properties for easy theming */
 :root {
-  --color-bg: #f0f2f5;
+  --color-bg: #0b1220;
+  --color-bg-2: #111a2e;
   --color-card: #ffffff;
   --color-text: #1a1a1a;
   --color-text-muted: #5c5c5c;
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-border: #e5e7eb;
+  --color-ring: rgba(37, 99, 235, 0.35);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
   --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
   --radius-card: 16px;
@@ -34,7 +36,10 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text);
-  background: var(--color-bg);
+  background:
+    radial-gradient(900px 600px at 20% 10%, rgba(37, 99, 235, 0.35), transparent 55%),
+    radial-gradient(900px 600px at 90% 30%, rgba(99, 102, 241, 0.22), transparent 55%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-2) 100%);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -50,13 +55,15 @@ body {
 /* Card container */
 .card {
   width: 100%;
-  max-width: 360px;
+  max-width: 420px;
   background: var(--color-card);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  padding: 32px 24px;
+  padding: clamp(24px, 5vw, 36px);
   text-align: center;
   transition: box-shadow 0.2s ease;
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  backdrop-filter: blur(6px);
 }
 
 .card:hover {
@@ -101,7 +108,7 @@ body {
 /* Name and title */
 .card__name {
   margin: 0 0 4px;
-  font-size: 1.5rem;
+  font-size: clamp(1.375rem, 3.8vw, 1.7rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -114,9 +121,17 @@ body {
 }
 
 .card__company {
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   font-size: 0.9375rem;
   color: var(--color-text-muted);
+}
+
+/* Subtle divider */
+.card__divider {
+  height: 1px;
+  border: 0;
+  margin: 0 0 18px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.12), transparent);
 }
 
 /* Contact links */
@@ -124,7 +139,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
+}
+
+.card__address {
+  margin: 6px 0 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
 }
 
 .card__link {
@@ -139,10 +161,14 @@ body {
   justify-content: center;
 }
 
-.card__link:hover,
-.card__link:focus {
+.card__link:hover {
   text-decoration: underline;
+}
+
+.card__link:focus-visible,
+.btn:focus-visible {
   outline: none;
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .card__link--website {
@@ -171,6 +197,7 @@ body {
   text-decoration: none;
   transition: background 0.2s ease, transform 0.1s ease;
   -webkit-tap-highlight-color: transparent;
+  width: 100%;
 }
 
 .btn:active {
@@ -210,8 +237,7 @@ body {
   }
 
   .card {
-    padding: 40px 32px;
-    max-width: 400px;
+    max-width: 440px;
   }
 
   .card__name {
