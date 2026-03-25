@@ -138,41 +138,81 @@ body {
 .card__contact {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 22px;
 }
 
-.card__address {
-  margin: 6px 0 0;
-  padding: 0;
-  font-size: 0.9375rem;
-  color: var(--color-text-muted);
+/* Modern contact rows (icon + label + value) */
+.contact-row {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  min-height: var(--tap-min);
+  transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.card__link {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9375rem;
-  padding: 4px 0;
-  min-height: var(--tap-min);
+.contact-row:hover {
+  background: #ffffff;
+  border-color: rgba(209, 213, 219, 1);
+}
+
+.contact-row:active {
+  transform: scale(0.99);
+}
+
+.contact-row__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.08);
 }
 
-.card__link:hover {
-  text-decoration: underline;
+.contact-row__text {
+  text-align: left;
+  min-width: 0;
 }
 
-.card__link:focus-visible,
+.contact-row__label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  line-height: 1.2;
+}
+
+.contact-row__value {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.contact-row--static {
+  cursor: default;
+}
+
+.contact-row--static:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(229, 231, 235, 0.9);
+}
+
+.contact-row:focus-visible,
 .btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px var(--color-ring);
-}
-
-.card__link--website {
-  color: var(--color-text-muted);
 }
 
 /* Action buttons - large for easy tapping */
